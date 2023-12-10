@@ -1,15 +1,15 @@
+import { Link } from 'react-router-dom';
+
 export default function MenuLateral() {
-    return(
+    return (
         <div>
             <ul>
                 <li>
                     <p><Link to={'/'}>Pagina Inicial</Link></p>
                 </li>
-
                 <li>
-                    <p><Link to={'/destaques'}>Pagina Detalhes</Link></p>
+                    <p><Link to={'/destaque'}>Pagina Detalhes</Link></p>
                 </li>
-
                 <li>
                     <p><Link to={'/cadastro'}>Pagina de Cadastro</Link></p>
                 </li>

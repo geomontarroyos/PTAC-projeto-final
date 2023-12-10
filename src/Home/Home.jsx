@@ -2,7 +2,7 @@ import CardVideo from '../Componentes/CardVideo';
 import MenuLateral from '../Menu/MenuLateral';
 
 export default function Home() {
-  const listaInicial = JSON.parse(localStorage.getItem("Lista"));
+  const listaInicial = JSON.parse(localStorage.getItem("Lista"))  || [];
   return(
     <div>
     <MenuLateral/>

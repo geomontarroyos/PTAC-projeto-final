@@ -1,63 +1,57 @@
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 
 export default function MusicaCadastro() {
-    const listaLocalStorage = JSON.parse(localStorage.getItem("Lista")) || [];
-    const [id, setId] = useState(listaLocalStorage[listaLocalStorage.length - 1]?.id + 1 || 1);
-    const [nome, setNome] = useState("");
-    const [cantor, setCantor] = useState("");
-    const [estilo, setEstilo] = useState("");
-    const [gravadora, setGravadora] = useState("");
-    const [dataLancamento, setDataLancamento] = useState("");
-    const [link, setLink] = useState("");
+  const [lista, setLista] = useState([]);
+  const listaLocalStorage = JSON.parse(localStorage.getItem("Lista")) || [];
+  const [id, setId] = useState(listaLocalStorage[listaLocalStorage.length - 1]?.id + 1 || 1);
+  const [nome, setNome] = useState("");
+  const [cantor, setCantor] = useState("");
+  const [estilo, setEstilo] = useState("");
+  const [gravadora, setGravadora] = useState("");
+  const [dataLancamento, setDataLancamento] = useState("");
+  const [link, setLink] = useState("");
 
+  const navagate = useNavigate();
 
+  useEffect(() => {
+    localStorage.setItem("Lista", JSON.stringify(listaLocalStorage));
+  }, [listaLocalStorage]);
 
-   useEffect(()=> {localStorage.setItem("Lista", JSON.stringify(lista))}, [lista]);
+  const dadosSalvos = async (e) => {
+    e.preventDefault();
 
-   const navagate = useNavigate()
+    setLista([
+      ...listaLocalStorage,
+      {
+        id: id,
+        nome: nome,
+        cantor: cantor,
+        estilo: estilo,
+        gravadora: gravadora,
+        dataLancamento: dataLancamento,
+        link: link
+      }
+    ]);
 
+    navagate("/");
+    setId(id + 1);
+    setNome("");
+    setCantor("");
+    setEstilo("");
+    setGravadora("");
+    setDataLancamento("");
+    setLink("");
+  };
 
-    const dadosSalvos = async (e) => {
-      e.preventDefault();
+  const remover = (id) => {
+    const auxLista = listaLocalStorage.filter((ativ) => ativ.id !== id);
+    setLista(auxLista);
+  };
 
-       await setLista([
-        ...lista,
-        {
-          id: id,
-          nome: nome,
-          cantor: cantor,
-          estilo: estilo,
-          gravadora: gravadora,
-          dataLancamento: dataLancamento,
-          link: link
-        }
-      ]);
-
-      navagate("/");
-      setId(id+1);
-      setNome("");
-      setCantor("");
-      setEstilo("");
-      setGravadora("");
-      setDataLancamento("");
-      setLink("");
-
-    };
-   
-    const remover = (id) => {
-      /*setLista(lista.filter((ativ) => (ativ.id !== id ? lista : null)));*/
-      const auxLista = [];
-      lista.map((lista) => {
-          if (lista.id !== id) {
-              auxLista.push(lista);
-          }
-      });
-      setLista(auxLista);
-  }
-  
-    return (
-        <div class="container">
+  return (
+    <div className="container">
       <h1>Cadastro das Melhores Musicas</h1>
       <form onSubmit={dadosSalvos}>
 
@@ -96,29 +90,29 @@ export default function MusicaCadastro() {
             value={link}
             onChange={(e) => { setLink(e.target.value) }}/> 
 
-       
-
           <button>Adicionar nova música</button>
       </form>
 
-      {lista.map((ativ) =>
-          <ul key={ativ.id}>
-            <Link to={`/detalhe/${ativ.id}`}>
-              <li>
-                  Autor:<p>{ativ.autor}</p>
-              </li>
-              </Link>
-              <li>
-                  Livro:<p>{ativ.livro}</p>
-              </li>
-              <li>
-                  Genero:<p>{ativ.genero}</p>
-                  
-              </li>
-          </ul>
-      )}
-     <button onClick={() => remover(ativ.id)}>Remover</button>
-     <button> <Link to="/">Voltar para a página inicial</Link> </button>
-  </div>
-);
-}
+      {listaLocalStorage.map((ativ) => (
+  <ul key={ativ.id}>
+    <Link to={`/detalhes/${ativ.id}`}>
+      <li>
+        Nome:<p>{ativ.nome}</p>
+      </li>
+      <li>
+        Cantor:<p>{ativ.cantor}</p>
+      </li>
+      <li>
+        Estilo:<p>{ativ.estilo}</p>
+      </li>
+      <button onClick={() => remover(ativ.id)}>Remover</button>
+    </Link>
+  </ul>
+))}
+
+      <button>
+        <Link to="/">Voltar para a página inicial</Link>
+      </button>
+    </div>
+  );
+};
