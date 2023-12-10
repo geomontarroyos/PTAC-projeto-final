@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 
-export default function MusicaCadastro() {
-  const [lista, setLista] = useState([]);
+export default function Cadastro() {
   const listaLocalStorage = JSON.parse(localStorage.getItem("Lista")) || [];
-  const [id, setId] = useState(listaLocalStorage[listaLocalStorage.length - 1]?.id + 1 || 1);
+  const [lista, setLista] = useState(listaLocalStorage);
+  const [id, setId] = useState(listaLocalStorage.length > 0 ? listaLocalStorage[listaLocalStorage.length - 1].id + 1 : 1);
   const [nome, setNome] = useState("");
   const [cantor, setCantor] = useState("");
   const [estilo, setEstilo] = useState("");
@@ -16,26 +16,25 @@ export default function MusicaCadastro() {
   const navagate = useNavigate();
 
   useEffect(() => {
-    localStorage.setItem("Lista", JSON.stringify(listaLocalStorage));
-  }, [listaLocalStorage]);
+    if (lista.length > 0) {
+      localStorage.setItem("Lista", JSON.stringify(lista));
+    }
+  }, [lista]);
 
-  const dadosSalvos = async (e) => {
+  const dadosSalvos = (e) => {
     e.preventDefault();
 
-    setLista([
-      ...listaLocalStorage,
-      {
-        id: id,
-        nome: nome,
-        cantor: cantor,
-        estilo: estilo,
-        gravadora: gravadora,
-        dataLancamento: dataLancamento,
-        link: link
-      }
-    ]);
+    const novaMusica = {
+      id: id,
+      nome: nome,
+      cantor: cantor,
+      estilo: estilo,
+      gravadora: gravadora,
+      dataLancamento: dataLancamento,
+      link: link
+    };
 
-    navagate("/");
+    setLista([...lista, novaMusica]);
     setId(id + 1);
     setNome("");
     setCantor("");
@@ -46,13 +45,13 @@ export default function MusicaCadastro() {
   };
 
   const remover = (id) => {
-    const auxLista = listaLocalStorage.filter((ativ) => ativ.id !== id);
+    const auxLista = lista.filter((ativ) => ativ.id !== id);
     setLista(auxLista);
   };
 
   return (
     <div className="container">
-      <h1>Cadastro das Melhores Musicas</h1>
+      <h1>Cadastro das Melhores Músicas</h1>
       <form onSubmit={dadosSalvos}>
 
           <h3>Digite o ID da música a ser adicionada:</h3>
@@ -92,23 +91,24 @@ export default function MusicaCadastro() {
 
           <button>Adicionar nova música</button>
       </form>
+      
 
-      {listaLocalStorage.map((ativ) => (
-  <ul key={ativ.id}>
-    <Link to={`/detalhes/${ativ.id}`}>
-      <li>
-        Nome:<p>{ativ.nome}</p>
-      </li>
-      <li>
-        Cantor:<p>{ativ.cantor}</p>
-      </li>
-      <li>
-        Estilo:<p>{ativ.estilo}</p>
-      </li>
-      <button onClick={() => remover(ativ.id)}>Remover</button>
-    </Link>
-  </ul>
-))}
+      {lista.map((ativ) => (
+        <ul key={ativ.id}>
+          <Link to={`/detalhes/${ativ.id}`}>
+            <li>
+              Nome:<p>{ativ.nome}</p>
+            </li>
+            <li>
+              Cantor:<p>{ativ.cantor}</p>
+            </li>
+            <li>
+              Estilo:<p>{ativ.estilo}</p>
+            </li>
+            <button onClick={() => remover(ativ.id)}>Remover</button>
+          </Link>
+        </ul>
+      ))}
 
       <button>
         <Link to="/">Voltar para a página inicial</Link>
@@ -116,3 +116,10 @@ export default function MusicaCadastro() {
     </div>
   );
 };
+
+
+
+
+
+
+

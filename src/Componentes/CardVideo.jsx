@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 export default function CardVideo({Musicas}){
    return(
         <div>
-
+     
             <p>{Musicas.nome}</p>
             <p>{Musicas.cantor}</p>
             <p>{Musicas.estilo}</p>
