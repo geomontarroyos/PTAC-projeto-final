@@ -3,14 +3,15 @@ import MenuLateral from "../Menu/MenuLateral";
 import CardVideo from "../Componentes/CardVideo";
 
 export default function destaque() {
-
-    const musicasDestaques = JSON.parse(localStorage.get("Lista"))
+    // Use getItem em vez de get
+    const musicasDestaques = JSON.parse(localStorage.getItem("Lista"));
     
-    return(
+    return (
        <div>
-          < MenuLateral /> 
-          {musicasDestaques.slice(-4).map((msuicas)  =>
-          < CardVideo musicas = {musicas}/>)}
+          <MenuLateral /> 
+          {musicasDestaques.slice(-4).map((Musicas) => (
+            <CardVideo key={Musicas.id} Musicas={Musicas} />
+          ))}
        </div>
-     );
+    );
 };
