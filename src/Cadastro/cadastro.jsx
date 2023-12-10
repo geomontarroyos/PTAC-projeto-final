@@ -62,6 +62,11 @@ export default function MusicaCadastro() {
       <h1>Cadastro das Melhores Musicas</h1>
       <form onSubmit={dadosSalvos}>
 
+          <h3>Digite o ID da música a ser adicionada:</h3>
+          <input type="text" 
+            value={id}
+            onChange={(e) => { setId(e.target.value) }}/>
+
          <h3>Digite sua musica a ser adicionada:</h3>
           <input type="text" 
             value={nome}
