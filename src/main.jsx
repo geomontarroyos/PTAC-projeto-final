@@ -5,6 +5,7 @@ import Home from  './Home/Home.jsx';
 import Destaque from './Destaque/destaque.jsx';
 import Cadastro from './Cadastro/cadastro.jsx';
 import Detalhe from './Detalhes/Detalhe.jsx'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
      <BrowserRouter>

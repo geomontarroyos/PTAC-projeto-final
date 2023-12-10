@@ -1,8 +1,16 @@
-import { useState } from "react";
-import {Link} from "react-router-dom";
-import './style.css'
-export default function Home(){
+import './style.css';
+import MenuLateral from "../Menu/MenuLateral";
+import CardVideo from "../Componentes/CardVideo";
+
+export default function destaque() {
+
+    const musicasDestaques = JSON.parse(localStorage.get("Lista"))
+    
     return(
-        <h1>PTAC 2 - PROJETO FINAL</h1>
+       <div>
+          < MenuLateral /> 
+          {musicasDestaques.slice(-4).map((msuicas)  =>
+          < CardVideo musicas = {musicas}/>)}
+       </div>
      );
-}
+};
