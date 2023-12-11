@@ -5,36 +5,34 @@ import "./style.css";
 export default function Cadastro() {
   const listaLocalStorage = JSON.parse(localStorage.getItem("Lista")) || [];
   const [lista, setLista] = useState(listaLocalStorage);
-  const [id, setId] = useState(listaLocalStorage.length > 0 ? listaLocalStorage[listaLocalStorage.length - 1].id + 1 : 1);
+  const [id, setId] = useState(listaLocalStorage[listaLocalStorage.length - 1]?.id + 1 || 1)
   const [nome, setNome] = useState("");
   const [cantor, setCantor] = useState("");
   const [estilo, setEstilo] = useState("");
   const [gravadora, setGravadora] = useState("");
   const [dataLancamento, setDataLancamento] = useState("");
   const [link, setLink] = useState("");
-
-  const navagate = useNavigate();
+  const [curtidas, setCurtidas] = useState("");
 
   useEffect(() => {
-    if (lista.length > 0) {
-      localStorage.setItem("Lista", JSON.stringify(lista));
-    }
-  }, [lista]);
+    localStorage.setItem("Lista", JSON.stringify(lista))},
+    [lista]);
 
   const dadosSalvos = (e) => {
     e.preventDefault();
 
-    const novaMusica = {
+     setLista([...lista, {
       id: id,
       nome: nome,
       cantor: cantor,
       estilo: estilo,
       gravadora: gravadora,
       dataLancamento: dataLancamento,
-      link: link
-    };
-
-    setLista([...lista, novaMusica]);
+      link: link,
+      curtidas: curtidas
+     }]);
+      
+    
     setId(id + 1);
     setNome("");
     setCantor("");
@@ -42,10 +40,11 @@ export default function Cadastro() {
     setGravadora("");
     setDataLancamento("");
     setLink("");
+    setCurtidas("");
   };
 
-  const remover = (id) => {
-    const auxLista = lista.filter((ativ) => ativ.id !== id);
+  const removerdados = (id) => {
+    const auxLista = lista.filter((remover) => remover.id !== id);
     setLista(auxLista);
   };
 
@@ -57,55 +56,61 @@ export default function Cadastro() {
           <h3>Digite o ID da música a ser adicionada:</h3>
           <input type="text" 
             value={id}
-            onChange={(e) => { setId(e.target.value) }}/>
+            onChange={(e) =>  setId(e.target.value) }/>
 
          <h3>Digite sua musica a ser adicionada:</h3>
           <input type="text" 
             value={nome}
-            onChange={(e) => { setNome(e.target.value) }}/>
+            onChange={(e) =>  setNome(e.target.value) }/>
           
           <h3>Digite o cantor da musica adicionada:</h3>
           <input type="text" 
             value={cantor}
-            onChange={(e) => { setCantor(e.target.value) }}/>
+            onChange={(e) =>  setCantor(e.target.value) }/>
 
           <h3>Digite o estilo da musica adicionada:</h3>
-          <input type="text" 
-            value={estilo}
-            onChange={(e) => { setEstilo(e.target.value) }}/>
+          <input 
+            type="text" 
+            value={estilo} 
+            onChange={(e) => setEstilo(e.target.value)} />
 
           <h3>Digite a gravadora da musica adicionada:</h3>
           <input type="text" 
             value={gravadora}
-            onChange={(e) => { setGravadora(e.target.value) }}/>
+            onChange={(e) =>  setGravadora(e.target.value) }/>
 
           <h3>Digite data de lançamento da musica a ser adicionada:</h3>
           <input type="text" 
             value={dataLancamento}
-            onChange={(e) => { setDataLancamento(e.target.value) }}/>  
+            onChange={(e) =>  setDataLancamento(e.target.value) }/>
+
+          <h3>Digite a quantidade de curtidas a  música a ser adicionada tem :</h3>
+          <input type="text" 
+            value={curtidas}
+            onChange={(e) =>  setCurtidas(e.target.value) }/>   
 
           <h3>Digite o link da musica a ser adicionada:</h3>
           <input type="text" 
             value={link}
-            onChange={(e) => { setLink(e.target.value) }}/> 
+            onChange={(e) => setLink(e.target.value) }/> 
 
           <button>Adicionar nova música</button>
       </form>
       
 
-      {lista.map((ativ) => (
-        <ul key={ativ.id}>
-          <Link to={`/detalhes/${ativ.id}`}>
+      {lista.map((remover) => (
+        <ul key={remover.id}>
+          <Link to={`/detalhes/${remover.id}`}>
             <li>
-              Nome:<p>{ativ.nome}</p>
+              Nome:<p>{remover.nome}</p>
             </li>
             <li>
-              Cantor:<p>{ativ.cantor}</p>
+              Cantor:<p>{remover.cantor}</p>
             </li>
             <li>
-              Estilo:<p>{ativ.estilo}</p>
+              Estilo:<p>{remover.estilo}</p>
             </li>
-            <button onClick={() => remover(ativ.id)}>Remover</button>
+            <button onClick={() => removerdados(remover.id)}>Remover</button>
           </Link>
         </ul>
       ))}

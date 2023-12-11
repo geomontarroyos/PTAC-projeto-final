@@ -1,13 +1,15 @@
-import { Link } from 'react-router-dom';
-export default function CardVideo({Musicas}){
+export default function CardVideos({Musicas}){
+
   return(
         <div>
 
-            <p>{Musicas.Nome}</p>
-            <p>{Musicas.Cantor}</p>
+            <p>{Musicas.nome}</p>
+            <p>{Musicas.cantor}</p>
+            <p>{Musicas.estilo}</p>
+            <p>{Musicas.gravadora}</p>
+            <p>{Musicas.dataLancamento}</p>
 
 
-            <Link to={`/detalhe/${Musicas.id}`}><button>Venha ouvir mais músicas</button></Link>       
               <iframe
                  width="500"
                  height="500"

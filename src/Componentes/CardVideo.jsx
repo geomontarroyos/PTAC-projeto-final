@@ -9,14 +9,15 @@ export default function CardVideo({ Musicas }) {
       <p>{Musicas.gravadora}</p>
       <p>{Musicas.dataLancamento}</p>
 
+      <Link to={`/detalhe/${Musicas.id}`}> <button>Ver mais</button> </Link>
+
       <iframe
         width="500"
         height="500"
         src={`https://www.youtube.com/embed/${Musicas.link.slice(10)}`}
         frameBorder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen 
-      />
+        allowFullScreen/>
     </div>
   );
 };
