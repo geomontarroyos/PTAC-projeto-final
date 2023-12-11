@@ -7,7 +7,10 @@ export default function Home() {
     <div>
     <MenuLateral/>
     <h3>Lista de Músicas boas</h3>
-    {listaInicial.map((Musicas) => <CardVideo Musicas = {Musicas}/>)}
+    {listaInicial.map((Musicas) => (
+    <CardVideo key={Musicas.id} Musicas={Musicas} />
+))}
+
     </div>
   )
 }
