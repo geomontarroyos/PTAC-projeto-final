@@ -4,7 +4,7 @@ import '../styles/card.css';
 export default function CardMusicas({ musicas }) {
   return (
     <div className='content-card'>
-      <div>
+      <div className='header-card'>
       <p className='card-info'>{musicas.nome}</p>
       <p className='card-info'>{musicas.cantor}</p>
       <p className='card-info'>{musicas.dataLancamento}</p>

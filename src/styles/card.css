@@ -6,7 +6,7 @@
   }
   
   .card-info {
-    margin-bottom: 10px; /* Adiciona espaçox entre as informações no cartão */
+    margin-bottom: 10px;
   }
   
   .ver-mais-button {
@@ -33,4 +33,8 @@
   iframe{
     width: 320px;
     height: 200px;
+  }
+
+  .header-card{
+    text-align: center;
   }
