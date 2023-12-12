@@ -8,8 +8,8 @@ export default function destaque() {
     return (
        <div>
           <MenuLateral /> 
-          {musicasDestaques.slice(-4).map((Musicas) => (
-            <CardMusicas Musicas ={Musicas} />
+          {musicasDestaques.slice(-4).map((musicas) => (
+            <CardMusicas musicas ={musicas} />
           ))}
        </div>
     );
