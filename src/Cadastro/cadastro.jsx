@@ -12,6 +12,7 @@ export default function Cadastro() {
   const [estilo, setEstilo] = useState("");
   const [gravadora, setGravadora] = useState("");
   const [dataLancamento, setDataLancamento] = useState("");
+  const [letra, setLetra] = useState("");
   const [link, setLink] = useState("");
   const [curtidas, setCurtidas] = useState("");
 
@@ -35,6 +36,7 @@ export default function Cadastro() {
       link: link,
       curtidas: curtidas,
       id: id,
+      letra :letra
      }]);
       
     
@@ -47,7 +49,8 @@ export default function Cadastro() {
     setLink("");
     setCurtidas("");
     setId(id + 1);
-    navigate("/")
+    navigate("/");
+    setLetra("")
   };
 
   return (
@@ -89,6 +92,11 @@ export default function Cadastro() {
           <input type="text" 
             value={curtidas}
             onChange={(e) =>  setCurtidas(e.target.value) }/>   
+
+          <h3>Digite a letra da musica:</h3>
+          <input type="text" 
+            value={letra}
+            onChange={(e) =>  setLetra(e.target.value) }/> 
 
           <h3>Digite o link da musica:</h3>
           <input type="text" 

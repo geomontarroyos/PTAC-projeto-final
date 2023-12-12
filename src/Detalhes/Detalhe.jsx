@@ -1,5 +1,6 @@
 import CardVideos from "../Componentes/CardDetalhe";
 import { useParams } from "react-router-dom";
+import MenuLateral from "../Menu/MenuLateral";
 
 export default function Detalhe() {
            
@@ -13,6 +14,11 @@ export default function Detalhe() {
         })
        console.log(Detalhe[0])
        return(
-         <CardVideos musicas = {Detalhe[0]} />
+        <div>
+          <MenuLateral/>
+          <div>
+               <CardVideos musicas = {Detalhe[0]} />
+          </div>
+         </div>
       );
  }

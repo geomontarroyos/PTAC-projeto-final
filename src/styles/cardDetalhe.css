@@ -1,0 +1,32 @@
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  
+  .video-container {
+    width: 500px;
+    margin-left: 50px;
+    margin-right: 20px;
+    margin-top: 100px;
+  }
+  
+  .iframe-detalhe{
+    width: 800px;
+    height: 500px;
+  }
+
+  .atributos-container {
+    width: 550px;
+    margin-top: 100px;  
+    margin-right: 50px ;
+    margin-left: 50px;
+    margin-bottom: 20px;
+  } 
+
+  p{
+    margin-bottom: 5px;
+  }
+
+
