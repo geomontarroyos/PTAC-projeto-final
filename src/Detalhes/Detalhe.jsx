@@ -13,6 +13,6 @@ export default function Detalhe() {
         })
        console.log(Detalhe[0])
        return(
-         <CardVideos Musicas = {Detalhe[0]} />
+         <CardVideos musicas = {Detalhe[0]} />
       );
  }

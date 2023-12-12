@@ -18,10 +18,14 @@ export default function Cadastro() {
     localStorage.setItem("Lista", JSON.stringify(lista))},
     [lista]);
 
-  const dadosSalvos = (e) => {
+
+    const navigate = useNavigate()  
+
+
+  const dadosSalvos = async (e) => {
     e.preventDefault();
 
-     setLista([...lista, {
+     await setLista([...lista, {
       nome: nome,
       cantor: cantor,
       estilo: estilo,
@@ -33,7 +37,7 @@ export default function Cadastro() {
      }]);
       
     
-    setId(id + 1);
+  
     setNome("");
     setCantor("");
     setEstilo("");
@@ -41,6 +45,8 @@ export default function Cadastro() {
     setDataLancamento("");
     setLink("");
     setCurtidas("");
+    setId(id + 1);
+    navigate("/")
   };
 
   return (
