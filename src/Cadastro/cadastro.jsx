@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import './Cadastro.css'
+import MenuLateral from "../Menu/MenuLateral";
 
 export default function Cadastro() {
   const listaLocalStorage = JSON.parse(localStorage.getItem("Lista")) || [];
@@ -50,10 +51,14 @@ export default function Cadastro() {
   };
 
   return (
-    <div className="container">
+    <div>
+      <MenuLateral/>
+    
+    <div className="content-cadastro">
       <h1>Cadastro das Melhores Músicas</h1>
+      
       <form onSubmit={dadosSalvos}>
-
+      <div>
          <h3>Digite o nome da música:</h3>
           <input type="text" 
             value={nome}
@@ -95,13 +100,14 @@ export default function Cadastro() {
           <input type="text" 
             value={id}
             onChange={(e) =>  setId(e.target.value) }/>
-
-          <button>Adicionar nova música</button>
+        </div>
+          <button className="button-cadastro">Adicionar nova música</button>
       </form>
     
-      <button>
-        <Link to="/">Voltar para a página inicial</Link>
+      <button className="button-voltar">
+        <Link to="/">Voltar ao ínicio</Link>
       </button>
+    </div>
     </div>
   );
 };
