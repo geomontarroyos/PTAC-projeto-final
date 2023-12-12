@@ -1,6 +1,5 @@
-import './style.css';
 import MenuLateral from "../Menu/MenuLateral";
-import CardVideo from "../Componentes/CardVideo";
+import CardMusicas from "../Componentes/CardMusicas";
 
 export default function destaque() {
     // Use getItem em vez de get
@@ -10,7 +9,7 @@ export default function destaque() {
        <div>
           <MenuLateral /> 
           {musicasDestaques.slice(-4).map((Musicas) => (
-            <CardVideo key={Musicas.id} Musicas={Musicas} />
+            <CardMusicas Musicas ={Musicas} />
           ))}
        </div>
     );

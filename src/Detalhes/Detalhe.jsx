@@ -1,4 +1,4 @@
-import CardVideos from "../Componentes/CardVideos";
+import CardVideos from "../Componentes/CardDetalhe";
 import { useParams } from "react-router-dom";
 
 export default function Detalhe() {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./style.css";
+import './Cadastro.css'
 
 export default function Cadastro() {
   const listaLocalStorage = JSON.parse(localStorage.getItem("Lista")) || [];
@@ -48,12 +48,12 @@ export default function Cadastro() {
       <h1>Cadastro das Melhores Músicas</h1>
       <form onSubmit={dadosSalvos}>
 
-         <h3>Digite sua musica da musica:</h3>
+         <h3>Digite o nome da música:</h3>
           <input type="text" 
             value={nome}
             onChange={(e) =>  setNome(e.target.value) }/>
           
-          <h3>Digite o cantor:</h3>
+          <h3>Digite o cantor da música:</h3>
           <input type="text" 
             value={cantor}
             onChange={(e) =>  setCantor(e.target.value) }/>
