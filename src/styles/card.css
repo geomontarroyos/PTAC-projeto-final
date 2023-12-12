@@ -1,0 +1,35 @@
+.content-card {
+    border: 1px solid #ddd; /* Adiciona uma borda sólida cinza */
+    padding: 15px; /* Adiciona algum preenchimento interno para espaçamento */
+    margin-bottom: 20px;
+  }
+  
+  .card-info {
+    margin-bottom: 10px; /* Adiciona espaço entre as informações no cartão */
+  }
+  
+  .ver-mais-button {
+    background-color: #007bff; /* Cor de fundo azul para o botão */
+    color: #fff; /* Cor do texto branco para o botão */
+    padding: 8px 16px; /* Adiciona algum preenchimento interno para espaçamento no botão */
+    border: none; /* Remove a borda do botão */
+    cursor: pointer; /* Muda o cursor para indicar que o botão é clicável */
+    transition: color 0.3s;
+
+  }
+  
+  .ver-mais-button:hover{
+    background-color: #3396ff;
+  }
+
+  .button-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  iframe{
+    width: 320px;
+    height: 200px;
+  }

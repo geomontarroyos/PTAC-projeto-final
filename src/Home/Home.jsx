@@ -9,11 +9,14 @@ export default function Home() {
     <div>
     <MenuLateral/>
     <div className='content-home'>
-    <h3>Lista de Músicas boas</h3>
+
+    <div className='title'><h1>Lista de Músicas boas</h1></div>
+    <div className='card-video'>
     {listaInicial.map((musicas) => (
     <CardMusicas musicas ={musicas} />
     
 ))}
+  </div>
 
   </div>
 
