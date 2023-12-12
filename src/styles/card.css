@@ -2,10 +2,11 @@
     border: 1px solid #ddd; /* Adiciona uma borda sólida cinza */
     padding: 15px; /* Adiciona algum preenchimento interno para espaçamento */
     margin-bottom: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.162);
   }
   
   .card-info {
-    margin-bottom: 10px; /* Adiciona espaço entre as informações no cartão */
+    margin-bottom: 10px; /* Adiciona espaçox entre as informações no cartão */
   }
   
   .ver-mais-button {

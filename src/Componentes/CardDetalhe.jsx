@@ -1,4 +1,4 @@
-export default function CardVideos({musicas}){
+export default function CardDetalhe({musicas}){
 
   return(
         <div>
