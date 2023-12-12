@@ -8,7 +8,7 @@ export default function MenuLateral() {
                     <p><Link to={'/'}>Pagina Inicial</Link></p>
                 </li>
                 <li>
-                    <p><Link to={'/detalhes'}>Pagina Detalhes</Link></p>
+                    <p><Link to={'/destaque'}>Pagina Destaques</Link></p>
                 </li>
                 <li>
                     <p><Link to={'/cadastro'}>Pagina de Cadastro</Link></p>
